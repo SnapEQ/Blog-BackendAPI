@@ -1,9 +1,12 @@
 HELP.md
 TODO.md
+/alldb_dumb.sql
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+!**/src/test/resources
+!**/src/main/resources
 
 ### STS ###
 .apt_generated
@@ -32,3 +35,4 @@ build/
 
 ### VS Code ###
 .vscode/
+
