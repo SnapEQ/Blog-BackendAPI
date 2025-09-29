@@ -22,6 +22,7 @@ public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public Post getPost(UUID id) {
         return postRepository
                 .findById(id)
@@ -68,8 +69,8 @@ public class PostServiceImpl implements PostService {
         return postRepository.save(existingPost);
     }
 
-    @Transactional
     @Override
+    @Transactional
     public void deletePost(UUID id) {
         Post post = getPost(id);
         postRepository.delete(post);
