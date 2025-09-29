@@ -25,7 +25,7 @@ public class PostServiceImpl implements PostService {
     @Transactional(readOnly = true)
     public Post getPost(UUID id) {
         return postRepository
-                .findById(id)
+                .findWithAuthorById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Post does not exist with ID " + id));
     }
 
