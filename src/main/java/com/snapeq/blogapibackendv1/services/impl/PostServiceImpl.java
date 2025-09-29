@@ -8,7 +8,7 @@ import com.snapeq.blogapibackendv1.domain.entities.User;
 import com.snapeq.blogapibackendv1.repositories.PostRepository;
 import com.snapeq.blogapibackendv1.services.PostService;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,12 +29,13 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override // May add @Transactional later for tag implementation
-    @Transactional
+    @Transactional(readOnly = true)
     public List<Post> getAllPosts() {
         return postRepository.findAllByStatus(PostStatus.PUBLISHED);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Post> getDraftPosts(User user) {
         return postRepository.findAllByAuthorAndStatus(user, PostStatus.DRAFT);
     }
