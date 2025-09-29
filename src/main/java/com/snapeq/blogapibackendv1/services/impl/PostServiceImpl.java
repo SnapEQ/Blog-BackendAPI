@@ -29,7 +29,7 @@ public class PostServiceImpl implements PostService {
                 .orElseThrow(() -> new EntityNotFoundException("Post does not exist with ID " + id));
     }
 
-    @Override // May add @Transactional later for tag implementation
+    @Override
     @Transactional(readOnly = true)
     public List<Post> getAllPosts() {
         return postRepository.findAllByStatus(PostStatus.PUBLISHED);
